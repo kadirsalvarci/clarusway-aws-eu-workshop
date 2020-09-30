@@ -6,7 +6,7 @@ from flaskext.mysql import MySQL
 app = Flask(__name__)
 
 # Configure mysql database
-app.config['MYSQL_DATABASE_HOST'] = 'database-1.cbanmzptkrzf.us-east-1.rds.amazonaws.com'
+app.config['MYSQL_DATABASE_HOST'] = 'database-eu.cbanmzptkrzf.us-east-1.rds.amazonaws.com'
 app.config['MYSQL_DATABASE_USER'] = 'admin'
 app.config['MYSQL_DATABASE_PASSWORD'] = '123456789'
 app.config['MYSQL_DATABASE_DB'] = 'clarusway'
@@ -31,9 +31,9 @@ CREATE TABLE users (
 data = """
 INSERT INTO clarusway.users 
 VALUES 
-    ("Buddy Rich", "buddy@clarusway.com" ),
-    ("Candido", "candido@clarusway.com"),
-	("Charlie Byrd", "charlie.byrd@clarusway.com");
+    ("Levent Akyuz", "levent.akyuz@gmail.com"),
+    ("Mustafa Kanat", "mustafa.kanat@yahoo.com"),
+	("Hakan Sule", "hakan.sule@clarusway.com");
 """
 cursor.execute(drop_table)
 cursor.execute(users_table)
@@ -101,7 +101,7 @@ def add_email():
         user_name = request.form['username']
         user_email = request.form['useremail']
         result = insert_email(user_name, user_email)
-        return render_template('add-email.html', result=result, show_result=True)
+        return render_template('add-email.html', result_html=result, show_result=True)
     else:
         return render_template('add-email.html', show_result=False)
 
